@@ -22,7 +22,7 @@ class time_rule:
         spe list: int list 
     """
 
-    def __init__(self,enabled,hh,mm,ss,operation,specific_rule,spe_list) -> None:
+    def __init__(self,enabled: bool,hh: int,mm: int,ss: int,operation: int,specific_rule: int,spe_list: list) -> None:
         self.enabled = enabled
         self.hh = hh
         self.mm = mm
@@ -31,12 +31,38 @@ class time_rule:
         self.specific = specific_rule
         self.spe_list = spe_list
         pass
-def check(cur: time_rule,set: time_rule) -> bool:
-    if cur.hh > set.hh :
+def check(hour:int,minute:int,second:int,dayOfWeek:int,set: time_rule) -> bool:
+    '''
+    Checks whether the rule will be executed
+    '''
+    if set.enabled == False:
         return False
-    elif cur.mm > set.mm :
+    if hour > set.hh :
         return False
-    elif cur.ss > set.ss :
+    elif minute > set.mm and hour == set.hh:
         return False
-    return True
-    pass
+    # elif second > set.ss :
+    #     return False
+    elif set.specific != 0:
+        if set.specific == 1:
+            for i in set.spe_list:
+                if i == dayOfWeek:
+                    return True
+            return False
+        elif set.specific == 2:
+            for i in set.spe_list:
+                if i == dayOfWeek:
+                    return False
+            return True
+        pass
+    else:
+        return True
+
+
+do_nothing = 0
+shutdown_now = 1
+shutdown_warn = 2
+
+no_specific = 0
+run_only_on = 1
+run_except = 2

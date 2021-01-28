@@ -13,5 +13,5 @@ def getSecond() -> int:
     pass
 def getDayOfWeek() -> int:
     d = tapi.now()
-    return int(d.weekday)
+    return int(d.weekday() + 1)
     pass
