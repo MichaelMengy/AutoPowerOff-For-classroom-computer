@@ -43,7 +43,7 @@ time_rule(enabled,hh,mm,ss,operation,specific_rule,spe_list)
 
 你也可以使用已经定义好的shutdown_now，shutdown_warn，no_specific，run_only_on，run_except 来替换规则里的参数，使规则更容易看懂
 
-<center><font size = '32' color = 'red'> 注意：必须按照时间顺序排序规则！</font></center>
+##  注意：必须按照时间顺序排序规则！
 
 请不要在规则里填写亿些奇奇怪怪的数据……否则程序会报错……
 
