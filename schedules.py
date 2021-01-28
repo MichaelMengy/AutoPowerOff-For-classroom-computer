@@ -46,7 +46,7 @@ def check(hour:int,minute:int,second:int,dayOfWeek:int,set: time_rule) -> bool:
     if (set.operation > 2 or set.operation < 0) or (set.specific > 2 or set.specific < 0):
         errors = True
         raise ValueError("Invalid operation or specific rule!")
-    if (set.operation != 0 and len(set.spe_list) == 0):
+    if (set.specific != 0 and len(set.spe_list) == 0):
         raise BaseException("specific rule not found")
     if(set.operation != 0):
         for i in set.spe_list:
