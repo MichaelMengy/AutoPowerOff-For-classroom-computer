@@ -10,22 +10,23 @@ class time_rule:
 
     Args:
 
-        enabled: bool whether the rule is enabled
+        enabled: bool 任务是否执行
 
-        hh: int trigger hour
+        hh: int 触发时刻-时
 
-        mm: int trigger minute
+        mm: int 触发时刻-分
 
-        ss: int trigger second
+        ss: int 触发时刻-秒
 
-        operation: int 0 = nothing | 1 = shutdown immeadiately | 2 = delayed shutdown
+        operation: int 任务操作: 0 = 直接关机|1 = 不执行任何操作|2 = 延迟一分钟关机|3 = 运行自定义cmd
 
-        specific rule: int 0 = no specific rule | 1 = the rule will be triggered only when DayOfWeek matches the ones in spe list | 2 = the rule should be triggered except the folowing days
+        specific rule: int 附加条件: 0 = 没有任何附加条件|1 = 只有在以下星期x触发 | 2 = 不在以下星期x触发
 
-        spe list: int list 
+        spe list: list 储存附加条件的列表
+        cmd: str 自定义命令行 
     """
 
-    def __init__(self,enabled: bool,hh: int,mm: int,ss: int,operation: int,specific_rule: int,spe_list: list) -> None:
+    def __init__(self,enabled: bool,hh: int,mm: int,ss: int,operation: int,specific_rule: int,spe_list: list,cmd :str) -> None:
         self.enabled = enabled
         self.hh = hh
         self.mm = mm
@@ -33,10 +34,11 @@ class time_rule:
         self.operation = operation
         self.specific = specific_rule
         self.spe_list = spe_list
+        self.cmd = cmd
         pass
 def check(hour:int,minute:int,second:int,dayOfWeek:int,set: time_rule) -> bool:
     '''
-    Checks whether the rule will be executed
+    Checks whether the rule will be executed and throw errors
     '''
     errors = False
     if (set.hh > 24 or set.hh <0) or (set.mm >59 or set.mm < 0) or (set.ss > 59 or set.ss < 0):
@@ -81,6 +83,7 @@ def check(hour:int,minute:int,second:int,dayOfWeek:int,set: time_rule) -> bool:
 do_nothing = 0
 shutdown_now = 1
 shutdown_warn = 2
+run_custom_cmd = 3
 
 no_specific = 0
 run_only_on = 1
