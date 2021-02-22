@@ -13,7 +13,14 @@
 
 ## 安装
 
-没啥好说的，装了python就行
+python 运行环境
+
+通过测试版本
+
+- python 3.7.4 32-bit & 64-bit on Windows
+- python 3.8.4 32-bit & 64-bit on Windows
+- python 3.9.1 32-bit & 64-bit on Windows
+- python 3.8.4 32-bit & 64-bit on Windows Subsystem for Linux(WSL)
 
 ---
 
