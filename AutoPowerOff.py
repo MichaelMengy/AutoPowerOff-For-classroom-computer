@@ -25,8 +25,8 @@ def runcustom(command:str):
 #the rules MUST be in the order of the time!!!
 OFFTIMES = [
     time_rule(True,10,10,0,shutdown_warn,run_except,[1],""),
-    time_rule(True,11,55,10,shutdown_warn,no_specific,[],""),
-    time_rule(True,17,15,30,shutdown_now,no_specific,[],""),
+    time_rule(True,11,55,30,shutdown_warn,no_specific,[],""),
+    time_rule(True,17,15,10,shutdown_now,no_specific,[],""),
     time_rule(True,19,59,0,shutdown_now,no_specific,[],"")
 ]
 print("System time = " + str(getHour()) + ":" + str(getMinute()) + ":" + str(getSecond())+ " DayOfWeek=" + str(getDayOfWeek()) )
